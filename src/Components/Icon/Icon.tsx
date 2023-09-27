@@ -12,7 +12,15 @@ const IconSocialMedia = styled(IconBase)`
 	height: 48px;
 	padding: 10px;
 	border-radius: 4px;
-	background-color: #f3f3f3;
+	background-color: #fff;
+	cursor: pointer;
+	border: 1px solid #e5e5e5;
+	&:hover {
+		background-color: #e5e5e5;
+	}
+	&:active {
+		background-color: #d0d0d0;
+	}
 `;
 
 const Icon = ({ src, alt, type, onClick }: IconProps) => {

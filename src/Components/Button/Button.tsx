@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { ButtonProps } from "../../types";
 
 const BaseButton = styled.button`
+	font-size: 16px;
+	font-weight: bold;
 	padding: 0.875rem 2rem;
 	border-radius: 5px;
 	cursor: pointer;
@@ -26,6 +28,9 @@ const ContainedButton = styled(BaseButton)`
 	background-color: #ff6c6c;
 	color: #ffffff;
 	border-radius: 4px;
+	font-size: 16px;
+	font-weight: normal;
+
 	&:hover {
 		background-color: #fc5151;
 	}
@@ -35,6 +40,9 @@ const OutlinedButton = styled(BaseButton)`
 	color: #ff5a60;
 	border-radius: 4px;
 	border: 1px solid #ff5a60;
+	font-size: 16px;
+	font-weight: normal;
+
 	&:hover {
 		background-color: #ffe2e3;
 		border: 1px solid #ff474b;
@@ -44,6 +52,8 @@ const ContainedButtonRounded = styled(BaseButton)`
 	background-color: #ff6c6c;
 	color: white;
 	border-radius: 30px;
+	font-size: 16px;
+	font-weight: normal;
 
 	&:hover {
 		background-color: #fc5151;
@@ -54,6 +64,8 @@ const OutlinedButtonRounded = styled(BaseButton)`
 	border-radius: 30px;
 	color: #ff5a60;
 	border: 1px solid #ff5a60;
+	font-size: 16px;
+	font-weight: normal;
 
 	&:hover {
 		background-color: #fff6f6;

@@ -13,6 +13,7 @@ const TYPES_INPUT = {
 	NUMBER_ICON: "number",
 	NUMBER: "number",
 	PASSWORD: "password",
+	EMAIL: "email",
 };
 
 const InputBase = styled.input`
@@ -41,7 +42,12 @@ const InputBaseIcon = styled(InputBase)`
 	}
 `;
 
-const ContainerIcon = styled.div`
+const ContainerNotIcon = styled.div`
+	width: 320px;
+	height: 40px;
+	margin-top: 8px;
+`;
+const ContainerIcon = styled(ContainerNotIcon)`
 	width: 310px;
 	height: 40px;
 	display: flex;
@@ -54,9 +60,10 @@ const ContainerIcon = styled.div`
 	boxizing: border-box;
 `;
 
-const ContainerNotIcon = styled.div`
-	width: 320px;
-	height: 40px;
+const ContainerLabel = styled.label`
+	padding-bottom: 8px;
+	font-size: 16px;
+	color: #3e3e3e;
 `;
 
 const Input = ({
@@ -66,6 +73,7 @@ const Input = ({
 	icon = false,
 	type = "text",
 	name,
+	label = "",
 }: InputProps) => {
 	const [showPassword, setShowPassword] = useState(false);
 	const [cleaningInput, setCleaningInput] = useState(false);
@@ -93,31 +101,34 @@ const Input = ({
 	const InputStyle = getInputStyle();
 
 	return (
-		<ContainerStyle>
-			<InputStyle
-				type={showPassword ? TYPES_INPUT.TEXT : type}
-				value={value}
-				name={name}
-				onChange={({ target }) => onChange(target.value)}
-				placeholder={placeholder}
-			/>
-			<div className="containerIcon">
-				{type === TYPES_INPUT.PASSWORD && (
-					<Icon
-						onClick={() => setShowPassword((prev: boolean) => !prev)}
-						src={showPassword ? enabledEye : disabledEye}
-						alt={showPassword ? "Ocultar" : "Mostrar"}
-					/>
-				)}
-				{type === TYPES_INPUT.TEXT && (
-					<Icon
-						onClick={() => setCleaningInput((prev: boolean) => !prev)}
-						src={trashIcon}
-						alt="Eliminar"
-					/>
-				)}
-			</div>
-		</ContainerStyle>
+		<>
+			{label && <ContainerLabel>{label}</ContainerLabel>}
+			<ContainerStyle>
+				<InputStyle
+					type={showPassword ? TYPES_INPUT.TEXT : type}
+					value={value}
+					name={name}
+					onChange={({ target }) => onChange(target.value)}
+					placeholder={placeholder}
+				/>
+				<div className="containerIcon">
+					{type === TYPES_INPUT.PASSWORD && (
+						<Icon
+							onClick={() => setShowPassword((prev: boolean) => !prev)}
+							src={showPassword ? enabledEye : disabledEye}
+							alt={showPassword ? "Ocultar" : "Mostrar"}
+						/>
+					)}
+					{type === TYPES_INPUT.TEXT && (
+						<Icon
+							onClick={() => setCleaningInput((prev: boolean) => !prev)}
+							src={trashIcon}
+							alt="Eliminar"
+						/>
+					)}
+				</div>
+			</ContainerStyle>
+		</>
 	);
 };
 

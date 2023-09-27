@@ -1,14 +1,8 @@
-import "./App.css";
-import ButtonTest from "./Components/Button/ButtonTest";
-import InputTest from "./Components/Input/InputTest";
+import React from "react";
+import RoutesApp from "./Routes/Routes";
 
-function App() {
-	return (
-		<>
-			<ButtonTest />
-			<InputTest />
-		</>
-	);
-}
+const App = () => {
+	return <RoutesApp />;
+};
 
 export default App;
