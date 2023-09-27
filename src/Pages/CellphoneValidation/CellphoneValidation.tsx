@@ -25,7 +25,6 @@ const CellphoneValidation = () => {
 	const navigate = useNavigate();
 	const modalRef = useRef();
 	const openModal = () => {
-		console.log(modalRef.current);
 		if (modalRef.current.classList.contains("hidden")) {
 			modalRef.current.classList.remove("hidden");
 		} else {
@@ -51,13 +50,13 @@ const CellphoneValidation = () => {
 
 	const handleChanges = ({ target }) => {
 		const { name, value } = target;
-		console.log(name, value);
+
 		setCodeValidation((prev) => ({ ...prev, [name]: value }));
 	};
 
 	const validateCode = async () => {
 		const response = await validatePhone(data.number);
-		console.log(response);
+
 		setData((prev: FormElements) => ({
 			...prev,
 			touched: true,

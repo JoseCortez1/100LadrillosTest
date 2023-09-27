@@ -9,10 +9,11 @@ import Icon from "../Components/Icon/Icon";
 import "./Main.css";
 import ValidatorPassword from "../Components/Validator/ValidatorPassword";
 import Button from "../Components/Button/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { validateEmail } from "../App/EmailServices";
 const Main = () => {
 	const { data, setData } = useContext(AppContext);
+	const navigate = useNavigate();
 	useEffect(() => {
 		setData((prev: FormElements) => ({ ...prev, step: 1 }));
 	}, []);
@@ -50,7 +51,6 @@ const Main = () => {
 						const regex = new RegExp(
 							/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 						);
-						console.log(target.value, regex.test(target.value));
 						if (!regex.test(target.value)) {
 							setData((prev: FormElements) => ({
 								...prev,
@@ -119,12 +119,15 @@ const Main = () => {
 						<Button
 							type={validateButton() ? "contained" : "disabled"}
 							onClick={() => {
-								console.log(validateEmail(data.email, data.password));
-								setData((prev: FormElements) => ({
-									...prev,
-									step: 2,
-									showSteps: true,
-								}));
+								const response = validateEmail(data.email, data.password);
+								if (response.id !== null) {
+									setData((prev: FormElements) => ({
+										...prev,
+										step: 2,
+										showSteps: true,
+									}));
+									navigate("/cellphone");
+								}
 							}}>
 							Siguiente
 						</Button>

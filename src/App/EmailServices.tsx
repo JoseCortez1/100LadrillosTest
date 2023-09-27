@@ -10,6 +10,5 @@ export const validateEmail = async (email: string, password: string) => {
 		},
 		body: JSON.stringify({ email, password }),
 	});
-	console.log("response", response);
 	return response;
 };
