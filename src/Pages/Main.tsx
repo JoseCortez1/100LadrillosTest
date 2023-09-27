@@ -115,23 +115,23 @@ const Main = () => {
 							}
 						/>
 					</div>
-					<Link to="/cellphone">
-						<Button
-							type={validateButton() ? "contained" : "disabled"}
-							onClick={() => {
-								const response = validateEmail(data.email, data.password);
-								if (response.id !== null) {
-									setData((prev: FormElements) => ({
-										...prev,
-										step: 2,
-										showSteps: true,
-									}));
-									navigate("/cellphone");
-								}
-							}}>
-							Siguiente
-						</Button>
-					</Link>
+
+					<Button
+						type={validateButton() ? "contained" : "disabled"}
+						onClick={async () => {
+							const response = await validateEmail(data.email, data.password);
+							console.log(response);
+							if (response.id != null) {
+								setData((prev: FormElements) => ({
+									...prev,
+									step: 2,
+									showSteps: true,
+								}));
+								navigate("/cellphone");
+							}
+						}}>
+						Siguiente
+					</Button>
 				</>
 			) : (
 				//social media

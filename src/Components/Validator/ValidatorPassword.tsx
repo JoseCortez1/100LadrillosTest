@@ -46,7 +46,7 @@ const ValidatorPassword = ({ password = "" }) => {
 				no100Ladrillos: false,
 			}));
 
-		if (/^(?![\s\S]*?(\w)\1{3})/.test(password))
+		if (/^(?![\s\S]*?(\w)\1{4})/.test(password))
 			setActive((prev: ValidationPassword) => ({ ...prev, no3Char: true }));
 		else setActive((prev: ValidationPassword) => ({ ...prev, no3Char: false }));
 
