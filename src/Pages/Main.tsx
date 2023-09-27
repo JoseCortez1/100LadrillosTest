@@ -1,4 +1,4 @@
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useContext } from "react";
 import { AppContext } from "../Context/AppContext";
 import { FormElements } from "../types";
 import Input from "../Components/Input/Input";
@@ -25,6 +25,7 @@ const Main = () => {
 
 		return flag;
 	};
+
 	return (
 		<>
 			<div
