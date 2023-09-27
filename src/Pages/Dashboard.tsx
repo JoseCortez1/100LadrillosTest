@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import Header from "../Components/Header/Header";
 import { Props } from "../types";
 import backgroundImage from "../Assets/backgroundIMG.png";
+import hamburguer from "../Assets/HamburgerMenu.png";
+import IconLogo from "../Assets/icon100ladrillos.png";
 import { AppContext } from "../Context/AppContext";
 import { Link } from "react-router-dom";
 const Dashboard = ({ children }: Props): React.ReactNode => {
@@ -9,6 +11,12 @@ const Dashboard = ({ children }: Props): React.ReactNode => {
 	return (
 		<div className="dashboard">
 			<Header />
+			<div className="headerMobile">
+				<img className="menu" src={hamburguer} alt="Logo 100Ladrillos" />
+				<Link to="/" className="logo">
+					<img src={IconLogo} alt="Logo 100Ladrillos" />
+				</Link>
+			</div>
 			<section className="imgSide">
 				<img className="imageBackground" src={backgroundImage} alt="" />
 			</section>

@@ -27,7 +27,7 @@ const Main = () => {
 	};
 
 	return (
-		<>
+		<div className="containerMain">
 			<div
 				className={`main__container_text ${
 					data.showSteps ? "margin_top" : ""
@@ -145,7 +145,7 @@ const Main = () => {
 					</div>
 				</div>
 			)}
-		</>
+		</div>
 	);
 };
 

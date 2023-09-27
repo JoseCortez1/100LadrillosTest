@@ -13,6 +13,9 @@
 		overflow: auto;
 		background-color: #21282d7d;
 		border: 1px solid #fff;
+		@media only screen and (max-width: 600px) {
+			top: 0;
+		}
 	}
 	.hidden {
 		display: none;
@@ -28,6 +31,10 @@
 		height: 570px;
 		background-color: white;
 		position: relative;
+		@media only screen and (max-width: 600px) {
+			width: 337px;
+			padding: 13px;
+		}
 		.contentModal {
 			display: flex;
 			flex-direction: column;

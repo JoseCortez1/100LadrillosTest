@@ -85,6 +85,10 @@ a {
 			margin-right: 24px;
 		}
 	}
+	.headerMobile {
+		display: none;
+	}
+
 	.logo {
 		margin-left: 1rem;
 	}
@@ -95,6 +99,46 @@ a {
 			width: 524px;
 			height: 603px;
 			object-fit: cover;
+		}
+	}
+	@media only screen and (max-width: 600px) {
+		/* CSS styles for phones */
+		grid-template-columns: auto;
+		grid-template-rows: auto;
+		grid-template-areas:
+			" header"
+			" main";
+		.imgSide {
+			grid-column: 1/2;
+			grid-row: 1/2;
+			height: 48px;
+			width: 100%;
+			.imageBackground {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center top;
+			}
+		}
+		.headerContainer {
+			display: none;
+		}
+		.dashboard {
+			position: relative;
+		}
+		.headerMobile {
+			position: absolute;
+			display: block;
+			top: 0;
+			display: flex;
+			justify-content: start;
+			align-items: center;
+			.menu {
+				height: 24px;
+				width: 24px;
+				margin: 12px 17px;
+				margin-right: 112px;
+			}
 		}
 	}
 }
