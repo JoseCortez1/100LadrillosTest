@@ -10,6 +10,7 @@ import "./Main.css";
 import ValidatorPassword from "../Components/Validator/ValidatorPassword";
 import Button from "../Components/Button/Button";
 import { Link } from "react-router-dom";
+import { validateEmail } from "../App/PhoneServices";
 const Main = () => {
 	const { data, setData } = useContext(AppContext);
 	useEffect(() => {
@@ -117,6 +118,7 @@ const Main = () => {
 						<Button
 							type={validateButton() ? "contained" : "disabled"}
 							onClick={() => {
+								console.log(validateEmail(data.email, data.password));
 								setData((prev: FormElements) => ({
 									...prev,
 									step: 2,

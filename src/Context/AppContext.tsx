@@ -14,6 +14,10 @@ const AppProvider = ({ children }) => {
 		step: 1,
 		showSteps: true,
 		errors: {},
+		firstName: "",
+		secondName: "",
+		lastName: "",
+		secondLastName: "",
 	});
 
 	return (

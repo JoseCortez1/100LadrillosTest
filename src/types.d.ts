@@ -1,5 +1,5 @@
 export interface ButtonProps {
-	onClick: () => void;
+	onClick: () => void | null;
 	children: string;
 	type?:
 		| "normal"
@@ -41,6 +41,9 @@ export interface FormElements {
 	showSteps: boolean;
 	number: number | null;
 	errors: { [key?: string]: string };
+	secondName: string;
+	lastName: string;
+	secondLastName: string;
 }
 export interface FormProps {
 	data: FormElements;

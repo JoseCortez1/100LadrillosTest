@@ -24,6 +24,13 @@ h1 {
 	line-height: 1.39;
 	color: #3e3e3e;
 }
+h1.notBold {
+	font-weight: normal;
+}
+h2.subtitle {
+	color: #8c8c8c;
+	font-size: 16px;
+}
 p {
 	color: #3e3e3e;
 	font-size: 14px;

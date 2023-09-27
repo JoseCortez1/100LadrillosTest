@@ -1,0 +1,12 @@
+.containerFormUser {
+	.inputForm {
+		padding-bottom: 12px;
+	}
+	.buttons {
+		display: flex;
+
+		align-items: center;
+		gap: 1rem;
+		margin: 24px 0 32px 0;
+	}
+}

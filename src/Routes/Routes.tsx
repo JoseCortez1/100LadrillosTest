@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "../Pages/Dashboard";
 import CreateAccount from "../Pages/CreateAccount";
 import CellphoneValidation from "../Pages/CellphoneValidation/CellphoneValidation";
+import FormUser from "../Pages/FormUser/FormUser";
 
 const RoutesApp = () => {
 	return (
@@ -11,7 +12,8 @@ const RoutesApp = () => {
 				<Routes>
 					<Route path="/" element={<Main />} />
 					<Route path="/cellphone" element={<CellphoneValidation />} />
-					<Route path="/create_account" element={<CreateAccount />} />
+					<Route path="/confirmUser" element={<CreateAccount />} />
+					<Route path="/formUser" element={<FormUser />} />
 				</Routes>
 			</Dashboard>
 		</BrowserRouter>
