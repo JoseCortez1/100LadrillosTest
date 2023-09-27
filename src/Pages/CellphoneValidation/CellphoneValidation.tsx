@@ -9,7 +9,7 @@ import { ButtonProps, FormElements } from "../../types";
 import { useNavigate } from "react-router-dom";
 
 import Button from "../../Components/Button/Button";
-import { validatePhone } from "../../App/PhoneServices";
+import { validatePIN, validatePhone } from "../../App/PhoneServices";
 const CellphoneValidation = () => {
 	const { data, setData } = useContext(AppContext);
 	const [codeValidation, setCodeValidation] = useState({
@@ -53,6 +53,31 @@ const CellphoneValidation = () => {
 		const { name, value } = target;
 		console.log(name, value);
 		setCodeValidation((prev) => ({ ...prev, [name]: value }));
+	};
+
+	const validateCode = async () => {
+		const response = await validatePhone(data.number);
+		console.log(response);
+		setData((prev: FormElements) => ({
+			...prev,
+			touched: true,
+			id: response?.id,
+		}));
+		if (response?.id !== null) {
+			openModal();
+		}
+	};
+	const validatePINPhone = async () => {
+		const response = await validatePIN(
+			codeValidation.first +
+				codeValidation.second +
+				codeValidation.third +
+				codeValidation.fourth
+		);
+		if (response.phone.verified) {
+			navigate("/formUser");
+			openModal();
+		}
 	};
 	return (
 		<section className="containerCellphoneValidation">
@@ -118,8 +143,7 @@ const CellphoneValidation = () => {
 							<Button
 								type={validatePINButtons("contained")}
 								onClick={() => {
-									navigate("/formUser");
-									openModal();
+									validatePINPhone();
 								}}>
 								Validar código
 							</Button>
@@ -148,8 +172,7 @@ const CellphoneValidation = () => {
 				<Button
 					type={validateButton("contained")}
 					onClick={() => {
-						validatePhone(data.number);
-						openModal();
+						validateCode();
 					}}>
 					Siguiente
 				</Button>

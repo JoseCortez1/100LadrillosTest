@@ -1,35 +1,19 @@
-const fetchData = async (url: string, body: object) => {
-	const response = await fetch(
-		"http://frontend-recruiting.100ladrillos.com/" + url,
-		body
-	);
-	const data = await response.json();
-	return data;
-};
+import { fetchData } from "./fetchData";
 
 export const validatePhone = async (phone: string) => {
 	console.log("phone", phone);
-	const response = await fetchData("api/phoneNumber", {
+	const response = await fetchData("phoneNumber", {
 		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			"Access-Control-Allow-Origin": "*",
-			Accept: "application/json",
-		},
 		body: JSON.stringify({ number: phone }),
 	});
 	console.log("response", response);
+	return response;
 };
 
-export const validateEmail = async (email: string, password: string) => {
-	const response = await fetchData("api/signUp", {
+export const validatePIN = async (pin: string) => {
+	const response = await fetchData("phoneNumber/verify", {
 		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			"Access-Control-Allow-Origin": "*",
-			Accept: "application/json",
-		},
-		body: JSON.stringify({ email, password }),
+		body: JSON.stringify({ token: pin }),
 	});
 	console.log("response", response);
 	return response;

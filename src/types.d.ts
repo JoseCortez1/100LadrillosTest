@@ -44,6 +44,7 @@ export interface FormElements {
 	secondName: string;
 	lastName: string;
 	secondLastName: string;
+	id: string;
 }
 export interface FormProps {
 	data: FormElements;

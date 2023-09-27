@@ -14,7 +14,7 @@ const Header = () => {
 			</Link>
 			<div className="buttons">
 				<Button onClick={() => {}}>Cómo funciona</Button>
-				{data.touched ? (
+				{data.touched && data.step == 1 ? (
 					<>
 						<Button type="outlined-rounded" onClick={() => {}}>
 							Entrar

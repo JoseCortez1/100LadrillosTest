@@ -25,7 +25,7 @@ const CreateAccount = () => {
 		<div className="containerCreateAccount">
 			<img className="containerCreateAccount__done" src={Done} alt="Hecho" />
 			<h1 className="title">Haz creado una cuenta</h1>
-			<p className="paragraph">Tu numero de cliente es 0000001</p>
+			<p className="paragraph">Tu numero de cliente es {data.id}</p>
 			<p className="paragraph name">
 				{getName()}
 				<span className="email">{data.email}</span>

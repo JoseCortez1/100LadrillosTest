@@ -134,13 +134,15 @@ const Input = ({
 								alt={showPassword ? "Ocultar" : "Mostrar"}
 							/>
 						)}
-					{[TYPES_INPUT.TEXT, TYPES_INPUT.EMAIL].includes(type) && icon && (
-						<Icon
-							onClick={() => setCleaningInput((prev: boolean) => !prev)}
-							src={trashIcon}
-							alt="Eliminar"
-						/>
-					)}
+					{[TYPES_INPUT.TEXT, TYPES_INPUT.EMAIL].includes(type) &&
+						icon &&
+						value !== "" && (
+							<Icon
+								onClick={() => setCleaningInput((prev: boolean) => !prev)}
+								src={trashIcon}
+								alt="Eliminar"
+							/>
+						)}
 				</div>
 			</ContainerStyle>
 		</>

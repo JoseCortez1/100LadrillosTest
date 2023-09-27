@@ -10,7 +10,7 @@ import "./Main.css";
 import ValidatorPassword from "../Components/Validator/ValidatorPassword";
 import Button from "../Components/Button/Button";
 import { Link } from "react-router-dom";
-import { validateEmail } from "../App/PhoneServices";
+import { validateEmail } from "../App/EmailServices";
 const Main = () => {
 	const { data, setData } = useContext(AppContext);
 	useEffect(() => {
@@ -93,7 +93,7 @@ const Main = () => {
 				/>
 			</div>
 
-			{!data.showSteps ? (
+			{!data.showSteps || data.touched ? (
 				//Validaor password
 
 				<>
