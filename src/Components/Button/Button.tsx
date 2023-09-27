@@ -103,7 +103,11 @@ const Button = ({ onClick, children, type = "normal" }: ButtonProps) => {
 
 	const ButtonStyle = getButtonStyle();
 
-	return <ButtonStyle onClick={onClick}>{children}</ButtonStyle>;
+	return (
+		<ButtonStyle onClick={type === "disabled" ? null : onClick}>
+			{children}
+		</ButtonStyle>
+	);
 };
 
 export default Button;
