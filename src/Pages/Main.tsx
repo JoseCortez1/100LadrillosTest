@@ -7,13 +7,29 @@ import googleIcon from "../Assets/google.png";
 import microsoftIcon from "../Assets/microsoft.png";
 import Icon from "../Components/Icon/Icon";
 import "./Main.css";
+import ValidatorPassword from "../Components/Validator/ValidatorPassword";
+import Button from "../Components/Button/Button";
+import { Link } from "react-router-dom";
 const Main = () => {
 	const { data, setData } = useContext(AppContext);
+	useEffect(() => {
+		setData((prev: FormElements) => ({ ...prev, step: 1 }));
+	}, []);
+	const validateButton = (): boolean => {
+		const flag =
+			data.password === data.confirmPassword &&
+			!data.errors?.email &&
+			data.email !== "" &&
+			data.password !== "";
 
+		return flag;
+	};
 	return (
 		<>
 			<div
-				className={`main__container_text ${data.showStep ? "" : "margin_top"}`}>
+				className={`main__container_text ${
+					data.showSteps ? "margin_top" : ""
+				}`}>
 				<h1>Crea tu cuenta </h1>
 				<p>
 					Al aceptar creas una cuenta en 100 Ladrillos aceptas nuestro{" "}
@@ -26,7 +42,25 @@ const Main = () => {
 					type="email"
 					label="¿Cuál es tu correo electrónico?"
 					name="email"
+					icon
 					value={data.email}
+					onBlur={({ target }): void => {
+						const regex = new RegExp(
+							/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+						);
+						console.log(target.value, regex.test(target.value));
+						if (!regex.test(target.value)) {
+							setData((prev: FormElements) => ({
+								...prev,
+								errors: { ...prev.errors, email: true },
+							}));
+						} else {
+							setData((prev: FormElements) => ({
+								...prev,
+								errors: { ...prev.errors, email: false },
+							}));
+						}
+					}}
 					onChange={(value) =>
 						setData((prev: FormElements) => ({
 							...prev,
@@ -36,6 +70,10 @@ const Main = () => {
 						}))
 					}
 				/>
+
+				{data.errors?.email && (
+					<span className="error">Ingresa un correo electrónico válido</span>
+				)}
 				<Input
 					type="password"
 					icon
@@ -55,13 +93,46 @@ const Main = () => {
 
 			{!data.showSteps ? (
 				//Validaor password
-				<div className="validatorPassword">Validator password</div>
+
+				<>
+					<ValidatorPassword password={data.password} />
+					<div>
+						<Input
+							type="password"
+							icon
+							label="Confirmas tu contraseña"
+							name="passwordConfirm"
+							value={data.confirmPassword}
+							onChange={(value) =>
+								setData((prev: FormElements) => ({
+									...prev,
+									confirmPassword: value,
+									showSteps: false,
+									touched: true,
+								}))
+							}
+						/>
+					</div>
+					<Link to="/cellphone">
+						<Button
+							type={validateButton() ? "contained" : "disabled"}
+							onClick={() => {
+								setData((prev: FormElements) => ({
+									...prev,
+									step: 2,
+									showSteps: true,
+								}));
+							}}>
+							Siguiente
+						</Button>
+					</Link>
+				</>
 			) : (
 				//social media
 				<div className="socialAndRegister">
 					<h2 className="register">
 						<span className="register__line"></span>
-						<p className="register__text">Registrate con</p>
+						<p className="register__text">o registrate con:</p>
 						<span className="register__line"></span>
 					</h2>
 					<div className="iconsMedia">
