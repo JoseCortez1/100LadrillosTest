@@ -1,14 +1,18 @@
 .containerCellphoneValidation {
+	.paragraph {
+		margin: 0px;
+	}
 	.modal {
 		display: block;
 		position: fixed;
 		z-index: 1;
 		left: 0;
-		top: 0;
+		top: -10%;
 		width: 100%;
-		height: 100%;
+		height: 120%;
 		overflow: auto;
-		background-color: rgba(0, 0, 0, 0.4);
+		background-color: #21282d7d;
+		border: 1px solid #fff;
 	}
 	.hidden {
 		display: none;
@@ -16,13 +20,20 @@
 	}
 
 	.modal-content {
+		border-radius: 4px;
 		margin: 15% auto;
 		padding: 20px;
-		border: 1px solid #888;
+		border: 1px solid #fff;
 		width: 549px;
 		height: 570px;
 		background-color: white;
 		position: relative;
+		.contentModal {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
 	}
 	.closeModal {
 		position: absolute;
@@ -35,5 +46,46 @@
 		justify-content: space-between;
 		align-items: center;
 		gap: 2rem;
+	}
+	.boxesNumber {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1rem;
+		.boxNumber {
+			background-color: #fff;
+			color: #3e3e3e;
+			width: 34px;
+			border-radius: 4px;
+			height: 46px;
+			flex-grow: 0;
+			margin: 0 16px 0 0;
+			border: solid 1px #bdbcbc;
+			padding: 12px;
+			box-sizing: border-box;
+			margin: 0;
+		}
+	}
+	.firstMessage {
+		margin-top: 41px;
+	}
+	.phoneNumber {
+		font-weight: bold;
+		font-size: 16px;
+	}
+	.expireCode {
+		margin: 41px 0px 39px 0px;
+		font-size: 12px;
+		font-weight: normal;
+		color: #8c8c8c;
+	}
+	.notArrive {
+		margin-top: 39.5px;
+	}
+	.subtitle {
+		&:hover {
+			cursor: pointer;
+			color: #3e3e3e;
+		}
 	}
 }
