@@ -68,7 +68,7 @@ const ContainerIcon = styled(ContainerNotIcon)`
 
 const ContainerLabel = styled.label`
 	padding-bottom: 8px;
-	font-size: 16px;
+	font-size: 14px;
 	color: #3e3e3e;
 `;
 
@@ -126,14 +126,15 @@ const Input = ({
 					placeholder={placeholder}
 				/>
 				<div className="containerIcon">
-					{[TYPES_INPUT.PASSWORD, TYPES_INPUT.NUMBER].includes(type) && (
-						<Icon
-							onClick={() => setShowPassword((prev: boolean) => !prev)}
-							src={showPassword ? enabledEye : disabledEye}
-							alt={showPassword ? "Ocultar" : "Mostrar"}
-						/>
-					)}
-					{[TYPES_INPUT.TEXT, TYPES_INPUT.EMAIL].includes(type) && (
+					{[TYPES_INPUT.PASSWORD, TYPES_INPUT.NUMBER].includes(type) &&
+						icon && (
+							<Icon
+								onClick={() => setShowPassword((prev: boolean) => !prev)}
+								src={showPassword ? enabledEye : disabledEye}
+								alt={showPassword ? "Ocultar" : "Mostrar"}
+							/>
+						)}
+					{[TYPES_INPUT.TEXT, TYPES_INPUT.EMAIL].includes(type) && icon && (
 						<Icon
 							onClick={() => setCleaningInput((prev: boolean) => !prev)}
 							src={trashIcon}
