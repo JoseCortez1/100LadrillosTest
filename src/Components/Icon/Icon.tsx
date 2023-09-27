@@ -14,6 +14,7 @@ const IconSocialMedia = styled(IconBase)`
 	border-radius: 4px;
 	background-color: #fff;
 	cursor: pointer;
+	box-sizing: border-box;
 	border: 1px solid #e5e5e5;
 	&:hover {
 		background-color: #e5e5e5;

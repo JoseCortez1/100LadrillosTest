@@ -58,6 +58,12 @@ const ContainerIcon = styled(ContainerNotIcon)`
 	position: relative;
 	border: 1px solid #e5e5e5;
 	boxizing: border-box;
+	border-radius: 4px;
+	input {
+		&:focus, &:focus-visible {
+			outline: none;
+			
+		}
 `;
 
 const ContainerLabel = styled.label`
@@ -68,7 +74,8 @@ const ContainerLabel = styled.label`
 
 const Input = ({
 	value,
-	onChange,
+	onChange = () => {},
+	onBlur = () => {},
 	placeholder,
 	icon = false,
 	type = "text",
@@ -79,13 +86,10 @@ const Input = ({
 	const [cleaningInput, setCleaningInput] = useState(false);
 	const validateIcon = () => icon || type === TYPES_INPUT.PASSWORD;
 	const getInputStyle = () => {
-		switch (type) {
-			case TYPES_INPUT.TEXT:
-			case TYPES_INPUT.PASSWORD:
-				return validateIcon() ? InputBaseIcon : InputBase;
-			default:
-				return InputBase;
+		if (validateIcon()) {
+			return InputBaseIcon;
 		}
+		return InputBase;
 	};
 
 	const getContainerStyle = () => {
@@ -99,27 +103,37 @@ const Input = ({
 	}, [cleaningInput]);
 	const ContainerStyle = getContainerStyle();
 	const InputStyle = getInputStyle();
+	const getType = () => {
+		if ([TYPES_INPUT.PASSWORD].includes(type)) {
+			return showPassword ? "text" : "password";
+		}
+		if ([TYPES_INPUT.NUMBER].includes(type)) {
+			return showPassword ? "number" : "password";
+		}
 
+		return type;
+	};
 	return (
 		<>
 			{label && <ContainerLabel>{label}</ContainerLabel>}
 			<ContainerStyle>
 				<InputStyle
-					type={showPassword ? TYPES_INPUT.TEXT : type}
+					type={getType()}
 					value={value}
 					name={name}
+					onBlur={onBlur}
 					onChange={({ target }) => onChange(target.value)}
 					placeholder={placeholder}
 				/>
 				<div className="containerIcon">
-					{type === TYPES_INPUT.PASSWORD && (
+					{[TYPES_INPUT.PASSWORD, TYPES_INPUT.NUMBER].includes(type) && (
 						<Icon
 							onClick={() => setShowPassword((prev: boolean) => !prev)}
 							src={showPassword ? enabledEye : disabledEye}
 							alt={showPassword ? "Ocultar" : "Mostrar"}
 						/>
 					)}
-					{type === TYPES_INPUT.TEXT && (
+					{[TYPES_INPUT.TEXT, TYPES_INPUT.EMAIL].includes(type) && (
 						<Icon
 							onClick={() => setCleaningInput((prev: boolean) => !prev)}
 							src={trashIcon}

@@ -12,7 +12,8 @@ export interface ButtonProps {
 
 export interface InputProps {
 	value?: string | number;
-	onChange: (value: string) => void;
+	onChange: (value: event | null) => void;
+	onBlur?: (value: event | null) => void;
 	placeholder?: string;
 	name: string;
 	type?: "text" | "number" | "password" | "email";
@@ -38,8 +39,19 @@ export interface FormElements {
 	allCompleted: boolean;
 	step: number;
 	showSteps: boolean;
+	number: number | null;
+	errors: { [key?: string]: string };
 }
 export interface FormProps {
 	data: FormElements;
 	setData: (ReactElement) => void;
+}
+
+export interface ValidationPassword {
+	minChar: boolean;
+	minNum: boolean;
+	minSpecialChar: boolean;
+	no100Ladrillos: boolean;
+	no3Char: boolean;
+	no3Num: boolean;
 }

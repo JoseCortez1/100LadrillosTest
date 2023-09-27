@@ -3,6 +3,7 @@ import Header from "../Components/Header/Header";
 import { Props } from "../types";
 import backgroundImage from "../Assets/backgroundIMG.png";
 import { AppContext } from "../Context/AppContext";
+import { Link } from "react-router-dom";
 const Dashboard = ({ children }: Props): React.ReactNode => {
 	const { data, setData } = useContext(AppContext);
 	return (
@@ -16,10 +17,18 @@ const Dashboard = ({ children }: Props): React.ReactNode => {
 
 				{data.showSteps && (
 					<div className="containerStep">
-						<div className={`${data.step === 1 ? "active" : ""} step`}></div>
-						<div className={`${data.step === 2 ? "active" : ""} step`}></div>
-						<div className={`${data.step === 3 ? "active" : ""} step`}></div>
-						<div className={`${data.step === 4 ? "active" : ""} step`}></div>
+						<Link
+							to="/"
+							className={`${data.step === 1 ? "active" : ""} step`}></Link>
+						<Link
+							to="/cellphone"
+							className={`${data.step === 2 ? "active" : ""} step`}></Link>
+						<Link
+							to="/"
+							className={`${data.step === 3 ? "active" : ""} step`}></Link>
+						<Link
+							to="/"
+							className={`${data.step === 4 ? "active" : ""} step`}></Link>
 					</div>
 				)}
 			</main>

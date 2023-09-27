@@ -10,8 +10,10 @@ const AppProvider = ({ children }) => {
 		confirmPassword: "",
 		touched: false,
 		allCompleted: false,
+		number: null,
 		step: 1,
 		showSteps: true,
+		errors: {},
 	});
 
 	return (

@@ -11,7 +11,7 @@ const Header = () => {
 			<img className="logo" src={IconLogo} alt="Logo 100Ladrillos" />
 			<div className="buttons">
 				<Button onClick={() => {}}>Cómo funciona</Button>
-				{!data.touched ? (
+				{data.touched ? (
 					<>
 						<Button type="outlined-rounded" onClick={() => {}}>
 							Entrar

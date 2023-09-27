@@ -30,6 +30,14 @@ p {
 	font-weight: normal;
 	font-stretch: normal;
 }
+span.error {
+	color: red;
+	font-size: 12px;
+	font-weight: normal;
+	font-stretch: normal;
+	display: block;
+	margin: 0.5rem 0px;
+}
 a {
 	color: #3ca4fc;
 	text-decoration: none;
@@ -109,8 +117,8 @@ a {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 4px;
-		height: 4px;
+		width: 8px;
+		height: 8px;
 		border-radius: 50%;
 		background-color: #eaeaea;
 		margin-left: 24px;
@@ -118,7 +126,7 @@ a {
 			margin-right: 24px;
 		}
 		&.active {
-			background-color: #3ca4fc;
+			background-color: #3e3e3e;
 		}
 	}
 }
